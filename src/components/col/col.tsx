@@ -56,9 +56,8 @@ const Col: React.FunctionComponent<BaseColProps> = (props1: any ) => {
   });
 
   return (
-    <div className={classList.join(' ')}  >
-     
-      {classList}
+    <div className={classList.join(' ')}>     
+      {children}
     </div>
   )
 }
