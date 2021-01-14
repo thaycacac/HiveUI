@@ -46,7 +46,6 @@ const Button: React.FunctionComponent<BaseButtonProps> = ({
       disabled={disabled || loading }
       autoFocus={autofocus}
       type={nativeType}
-
     >
       {
         loading && <i className="hive-icon-loading"/>

@@ -1,45 +1,32 @@
-import React, {Children, Component} from 'react';
-import classnames from 'classnames'
-import   PropTypes from 'prop-types';
+import React from 'react';
 
 export interface BaseColProps {
   span?: number;
   tag?: string;
   offset?: number;
-  pull?:number;
+  pull?: number;
   push?: number;
-  xs?: [number, object];
-  sm?: [number, object];
-  md?: [number, object];
-  lg?: [number, object];
-  xl?: [number, object];
+  xs?: number;
+  sm?: number;
+  md?: number;
+  lg?: number;
+  xl?: number;
   children: any;
 }
 
-const Col: React.FunctionComponent<BaseColProps> = ({
-  span,
-  tag,
-  offset,
-  pull,
-  push,
-  xs,
-  sm,
-  md,
-  lg,
-  xl,
-  children,
-}: BaseColProps ) => {
+const Col: React.FunctionComponent<BaseColProps> = (props1: any ) => {
+  const {span,
+    tag,
+    offset,
+    pull,
+    push,
+    xs,
+    sm,
+    md,
+    lg,
+    xl,
+    children} = props1;
 
-  // getStyle() {
-  //   const style = {};
-
-  //   if (this.context.gutter) {
-  //     style.paddingLeft = `${this.context.gutter / 2}px`;
-  //     style.paddingRight = style.paddingLeft;
-  //   }
-
-  //   return style;
-  // }
   
   let classList = ['el-col'];
 
@@ -53,7 +40,7 @@ const Col: React.FunctionComponent<BaseColProps> = ({
     }
   });
 
-  [xs, sm, md, lg].forEach((size: number | object = 0) => {
+  ["xs", "sm", "md", "lg", "xl"].forEach((size: number | object | string = 0) => {
     if (typeof size === 'object') {
       let props: any = size;
       Object.keys(props).forEach((prop: any) => {
@@ -62,14 +49,16 @@ const Col: React.FunctionComponent<BaseColProps> = ({
           ? `el-col-${Object.keys(size)[0]}-${prop}-${props[prop]}`
           : `el-col-${Object.keys(size)[0]}-${props[prop]}` 
         );
-      });
-    } else if (size >= 0) {
-      classList.push(`el-col-${Object.keys(size)[0]}-${size}`);
+      }); 
+    } else {
+      classList.push(`el-col-${size}-${props1[size]}`);
     }
   });
+
   return (
-    <div className={classList.join(' ')}>
-      children
+    <div className={classList.join(' ')}  >
+     
+      {classList}
     </div>
   )
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from './components/button'
 // import Tooltip from './components/tooltip/tooltip';
-import ElCol from './components/col/col'
+import Col from './components/col/col'
 import './theme/index.scss'
 
 function App() {
@@ -9,9 +9,10 @@ function App() {
     <div className="App">
       <Button type="warning" round >Danger</Button>
       {/* <Tooltip></Tooltip> */}
-      <ElCol span={6}>
-        <div className="grid-content bg-purple"></div>
-      </ElCol>
+      <Col lg={12} md={24} >
+       test
+      </Col>
+ 
     </div>
   );
 }
