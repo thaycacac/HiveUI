@@ -1,4 +1,5 @@
 import React, {Children, Component} from 'react';
+import classnames from 'classnames'
 import   PropTypes from 'prop-types';
 
 export interface BaseColProps {
@@ -29,54 +30,52 @@ const Col: React.FunctionComponent<BaseColProps> = ({
   children,
 }: BaseColProps ) => {
 
-  getStyle() {
-    const style = {};
+  // getStyle() {
+  //   const style = {};
 
-    if (this.context.gutter) {
-      style.paddingLeft = `${this.context.gutter / 2}px`;
-      style.paddingRight = style.paddingLeft;
-    }
+  //   if (this.context.gutter) {
+  //     style.paddingLeft = `${this.context.gutter / 2}px`;
+  //     style.paddingRight = style.paddingLeft;
+  //   }
 
-    return style;
-  }
+  //   return style;
+  // }
   
-  let classList = [];
+  let classList = ['el-col'];
 
-  ['span', 'offset', 'pull', 'push'].forEach(prop => {
-    if (this.props[prop] >= 0) {
+  [span, offset, pull, push].forEach((prop: number = 0) => {
+    if (prop >= 0) {
       classList.push(
-        prop !== 'span'
-        ? `el-col-${prop}-${this.props[prop]}`
-        : `el-col-${this.props[prop]}`
+        prop !== span
+        ? `el-col-${Object.keys({prop})[0]}-${prop}`
+        : `el-col-${prop}`
       );
     }
   });
 
-  ['xs', 'sm', 'md', 'lg'].forEach(size => {
-    if (typeof this.props[size] === 'object') {
-      let props = this.props[size];
-      Object.keys(props).forEach(prop => {
+  [xs, sm, md, lg].forEach((size: number | object = 0) => {
+    if (typeof size === 'object') {
+      let props: any = size;
+      Object.keys(props).forEach((prop: any) => {
         classList.push(
           prop !== 'span'
-          ? `el-col-${size}-${prop}-${props[prop]}`
-          : `el-col-${size}-${props[prop]}` 
+          ? `el-col-${Object.keys(size)[0]}-${prop}-${props[prop]}`
+          : `el-col-${Object.keys(size)[0]}-${props[prop]}` 
         );
       });
-    } else if (this.props[size] >= 0) {
-      classList.push(`el-col-${size}-${Number(this.props[size])}`);
+    } else if (size >= 0) {
+      classList.push(`el-col-${Object.keys(size)[0]}-${size}`);
     }
   });
-  return 
-    React.createElement(tag, {
-      className: this.className('el-col', classList),
-      style: this.style(getStyle())
-    }, this.props.children)
-
-
+  return (
+    <div className={classList.join(' ')}>
+      children
+    </div>
+  )
 }
   
 Col.defaultProps = {
   span: 24,
   tag: 'div'
 }
-export default Col 
+export default Col
