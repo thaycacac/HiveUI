@@ -9,7 +9,7 @@ export interface AlertBaseProps {
   center?: boolean,
   closeText?: string,
   showIcon?: boolean,
-  effect?: 'Dark' | 'Light',
+  effect?: 'dark' | 'light',
   children?: string;
 }
 const Alert: React.FunctionComponent<AlertBaseProps> = ({
@@ -24,9 +24,9 @@ const Alert: React.FunctionComponent<AlertBaseProps> = ({
   children
 }: AlertBaseProps) => {
   const classes = classNames(
-    'hive--alert',
+    'hive-alert',
     {
-      [`hive-alert--${title}`]: title,
+      'is-title': title,
       [`hive-alert--${type}`]: type,
       'is-closeText': closeText,
       'is-showIcon': showIcon,
@@ -36,33 +36,26 @@ const Alert: React.FunctionComponent<AlertBaseProps> = ({
     }
   );
   return (
-    <div
-      className={classes}
-    >
-      <span >
+    <div >
+      <span className={classes}>
         <div>
-          {title &&
-            <h3>{title}</h3>
-          }
-          <br/>
+          {title && <p>{title}</p>}
           {description ? (
             <span>{description}</span>) : null
           }
         </div>
-        {closable ? (
-          <button
-            type={"button"}
-          >X
+        {closable &&
+          <button>
+            {children}
           </button>
-        ) : null}
+        }
       </span>
-      <span>{children}</span>
     </div>
   )
 }
 Alert.defaultProps = {
   type: 'info',
-  effect: 'Dark',
+  effect: 'light',
   closable: true,
   center: false,
   showIcon: false,
