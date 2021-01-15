@@ -12,7 +12,7 @@ export interface BaseButtonProps {
   autofocus?: boolean,
   round?: boolean,
   circle?: boolean
-  children?: string | React.ReactNode
+  children?: string | React.ReactNode,
 }
 
 const Button: React.FunctionComponent<BaseButtonProps> = ({
@@ -26,7 +26,7 @@ const Button: React.FunctionComponent<BaseButtonProps> = ({
   autofocus,
   round,
   circle,
-  children
+  children,
 }: BaseButtonProps) => {
   const classes = classNames(
     'hive-button',
@@ -61,7 +61,7 @@ const Button: React.FunctionComponent<BaseButtonProps> = ({
     </button>
   )
 };
-
+  
 Button.defaultProps = {
   type: 'default',
   icon: '',
