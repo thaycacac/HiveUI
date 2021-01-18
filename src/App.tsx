@@ -1,4 +1,4 @@
-<<<<<<< HU-61
+
 import React from "react";
 import Button from "./components/button";
 import ElCol from "./components/col/col";
