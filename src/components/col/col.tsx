@@ -56,13 +56,9 @@ const Col: React.FunctionComponent<BaseColProps> = (props1: any) => {
         classList.push(`el-col-${size}-${props1[size]}`);
       }
     }
-  });
-  return (
-    <div className={classList.join(' ')}>
-      {children}
-    </div>
-  )
-}
+  );
+  return <div className={classList.join(" ")}>{children}</div>;
+};
 
 Col.defaultProps = {
   span: 24,

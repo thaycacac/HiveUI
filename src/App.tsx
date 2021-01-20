@@ -1,8 +1,8 @@
-
 import React from "react";
 import Button from "./components/button";
 import ElCol from "./components/col/col";
 import Row from "./components/row/row";
+import Tooltip from "./components/tooltip/tooltip";
 import "./theme/index.scss";
 
 function App() {
