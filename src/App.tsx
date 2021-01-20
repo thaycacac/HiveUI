@@ -8,6 +8,9 @@ import "./theme/index.scss";
 function App() {
   return (
     <div className="App">
+      <Button type="warning" round>
+        Danger
+      </Button>
       <Row justify="center" aligh="middle">
         <ElCol span={6}>
           <div className="grid-content bg-purple">col-1</div>
@@ -22,16 +25,6 @@ function App() {
           <div className="grid-content bg-purple">col-4</div>
         </ElCol>
       </Row>
-
-      <Tooltip
-        style={{ marginTop: "100px", marginLeft: "100px" }}
-        direction="right"
-        content="lalaland hahaha hihihi"
-      >
-        <Button type="warning" round>
-          Danger
-        </Button>
-      </Tooltip>
     </div>
   );
 }
